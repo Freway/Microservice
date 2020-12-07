@@ -25,7 +25,7 @@ namespace LocadoradeVeiculos
             //services.AddDbContext<LocadoraContext>(opt =>
             //                                   opt.UseInMemoryDatabase("LocadoraContext"));
             services.AddDbContext<LocadoraContext>(opt =>
-                opt.UseSqlServer(Configuration.GetConnectionString("LocadoraContext")));
+                opt.UseSqlServer(Configuration.GetConnectionString("Locadora")));
 
         }
 

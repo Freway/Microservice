@@ -116,11 +116,6 @@ C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculo
 C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
-C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
-C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
-C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
-C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
 C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\alpine-x64\native\libe_sqlite3.so
 C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\linux-arm\native\libe_sqlite3.so
 C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\linux-arm64\native\libe_sqlite3.so
@@ -133,8 +128,6 @@ C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculo
 C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
-C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
-C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\obj\Debug\netcoreapp3.1\LocadoradeVeiculos.csprojAssemblyReference.cache
 C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\obj\Debug\netcoreapp3.1\LocadoradeVeiculos.AssemblyInfoInputs.cache
@@ -150,3 +143,15 @@ C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculo
 C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\obj\Debug\netcoreapp3.1\LocadoradeVeiculos.pdb
 C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\obj\Debug\netcoreapp3.1\LocadoradeVeiculos.genruntimeconfig.cache
 C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
