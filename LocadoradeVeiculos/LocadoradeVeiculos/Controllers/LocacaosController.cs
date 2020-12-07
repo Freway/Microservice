@@ -83,7 +83,7 @@ namespace LocadoradeVeiculos.Controllers
             _context.Locacoes.Add(locacao);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetLocacao", new { id = locacao.IdLocacao }, locacao);
+            return CreatedAtAction(nameof(GetLocacao), new { id = locacao.IdLocacao }, locacao);
         }
 
         // DELETE: api/Locacaos/5

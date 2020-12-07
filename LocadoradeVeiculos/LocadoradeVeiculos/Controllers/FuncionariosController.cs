@@ -83,7 +83,7 @@ namespace LocadoradeVeiculos.Controllers
             _context.Funcionarios.Add(funcionario);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetFuncionario", new { id = funcionario.IdFuncionario }, funcionario);
+            return CreatedAtAction(nameof(GetFuncionario), new { id = funcionario.IdFuncionario }, funcionario);
         }
 
         // DELETE: api/Funcionarios/5

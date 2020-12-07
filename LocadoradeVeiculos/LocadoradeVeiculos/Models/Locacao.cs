@@ -8,13 +8,19 @@ namespace LocadoradeVeiculos.Models
     public class Locacao
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdLocacao { get; set; }
         [DataType(DataType.Date)]
         public DateTime DataReservaInicio { get; set; }
         public DateTime DataReservaFim { get; set; }
-        //public int IdEstoque { get; set; }
-        public virtual Estoque Estoque { get; set; }
+        [Required]
+        public int IdCliente { get; set; }
 
+        [ForeignKey("IdCliente")]
         public virtual Cliente Cliente { get; set; }
+        [Required]
+        public int IdEstoque{ get; set; }
+        [ForeignKey("IdEstoque")]
+        public virtual Estoque Estoque { get; set; }
     }
 }

@@ -22,8 +22,11 @@ namespace LocadoradeVeiculos
         {
             services.AddControllers();
 
+            //services.AddDbContext<LocadoraContext>(opt =>
+            //                                   opt.UseInMemoryDatabase("LocadoraContext"));
             services.AddDbContext<LocadoraContext>(opt =>
-                                               opt.UseInMemoryDatabase("LocadoraContext"));
+                opt.UseSqlServer(Configuration.GetConnectionString("LocadoraContext")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

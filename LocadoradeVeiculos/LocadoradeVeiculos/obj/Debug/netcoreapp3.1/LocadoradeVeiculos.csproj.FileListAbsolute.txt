@@ -149,3 +149,4 @@ C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculo
 C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\obj\Debug\netcoreapp3.1\LocadoradeVeiculos.dll
 C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\obj\Debug\netcoreapp3.1\LocadoradeVeiculos.pdb
 C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\obj\Debug\netcoreapp3.1\LocadoradeVeiculos.genruntimeconfig.cache
+C:\Users\Acer\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll

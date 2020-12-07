@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "fhvcDVB+zMRjeUvOU0RhqIn876GJjku6EGhukoo2m5IVfLGVdueuyomcUnXXtTvkK00gp1luHXNY1vgPk+wJNA==",
+  "dgSpecHash": "9uUvXxD2Zxt+Q5VOOgz8wx5901T6kSPVTZrZMqK5RJVtqmja6W0N4GN0Pgu6+YKVk/GcJwQmyNMD67i5yO/ltw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Acer\\Documents\\GitHub\\Microservice\\LocadoradeVeiculos\\LocadoradeVeiculos\\LocadoradeVeiculos.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\Acer\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
     "C:\\Users\\Acer\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\3.1.0\\microsoft.aspnetcore.razor.language.3.1.0.nupkg.sha512",
     "C:\\Users\\Acer\\.nuget\\packages\\microsoft.aspnetcore.razor.runtime\\2.2.0\\microsoft.aspnetcore.razor.runtime.2.2.0.nupkg.sha512",
+    "C:\\Users\\Acer\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "C:\\Users\\Acer\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\2.9.4\\microsoft.codeanalysis.analyzers.2.9.4.nupkg.sha512",
     "C:\\Users\\Acer\\.nuget\\packages\\microsoft.codeanalysis.common\\3.3.1\\microsoft.codeanalysis.common.3.3.1.nupkg.sha512",
     "C:\\Users\\Acer\\.nuget\\packages\\microsoft.codeanalysis.csharp\\3.3.1\\microsoft.codeanalysis.csharp.3.3.1.nupkg.sha512",
