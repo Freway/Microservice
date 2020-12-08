@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LocadoradeVeiculos.Data;
 using LocadoradeVeiculos.Models;
+using LocadoradeVeiculos.Tools;
 
 namespace LocadoradeVeiculos.Controllers
 {
@@ -80,8 +81,15 @@ namespace LocadoradeVeiculos.Controllers
         [HttpPost]
         public async Task<ActionResult<Cliente>> PostCliente(Cliente cliente)
         {
+            //if (ValidaCPF.IsCpf(cliente.CPF))
+            //{
+            //}
+
             _context.Clientes.Add(cliente);
             await _context.SaveChangesAsync();
+
+
+           
 
             return CreatedAtAction(nameof(GetCliente), new { id = cliente.IdCliente }, cliente);
         }

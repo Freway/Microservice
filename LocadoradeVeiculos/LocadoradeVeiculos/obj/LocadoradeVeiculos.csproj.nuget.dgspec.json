@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Acer\\Documents\\GitHub\\Microservice\\LocadoradeVeiculos\\LocadoradeVeiculos\\LocadoradeVeiculos.csproj": {}
+    "C:\\Users\\Freway\\Documents\\GitHub\\Microservice\\LocadoradeVeiculos\\LocadoradeVeiculos\\LocadoradeVeiculos.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Acer\\Documents\\GitHub\\Microservice\\LocadoradeVeiculos\\LocadoradeVeiculos\\LocadoradeVeiculos.csproj": {
+    "C:\\Users\\Freway\\Documents\\GitHub\\Microservice\\LocadoradeVeiculos\\LocadoradeVeiculos\\LocadoradeVeiculos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Acer\\Documents\\GitHub\\Microservice\\LocadoradeVeiculos\\LocadoradeVeiculos\\LocadoradeVeiculos.csproj",
+        "projectUniqueName": "C:\\Users\\Freway\\Documents\\GitHub\\Microservice\\LocadoradeVeiculos\\LocadoradeVeiculos\\LocadoradeVeiculos.csproj",
         "projectName": "LocadoradeVeiculos",
-        "projectPath": "C:\\Users\\Acer\\Documents\\GitHub\\Microservice\\LocadoradeVeiculos\\LocadoradeVeiculos\\LocadoradeVeiculos.csproj",
-        "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Acer\\Documents\\GitHub\\Microservice\\LocadoradeVeiculos\\LocadoradeVeiculos\\obj\\",
+        "projectPath": "C:\\Users\\Freway\\Documents\\GitHub\\Microservice\\LocadoradeVeiculos\\LocadoradeVeiculos\\LocadoradeVeiculos.csproj",
+        "packagesPath": "C:\\Users\\Freway\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Freway\\Documents\\GitHub\\Microservice\\LocadoradeVeiculos\\LocadoradeVeiculos\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Freway\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"

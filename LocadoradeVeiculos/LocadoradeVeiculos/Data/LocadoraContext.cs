@@ -6,13 +6,11 @@ namespace LocadoradeVeiculos.Data
 {
     public class LocadoraContext : DbContext
     {
-        public LocadoraContext()
-        {
-        }
-
         public LocadoraContext(DbContextOptions<LocadoraContext> options) : base(options)
-       //public LocadoraContext():base(LocadoraContext)
         {
+            //Cria a base de dados e suas respectivas tabelas se não existir
+            Database.EnsureCreated();
+            
         }
 
         public DbSet<Cliente> Clientes { get; set; }
