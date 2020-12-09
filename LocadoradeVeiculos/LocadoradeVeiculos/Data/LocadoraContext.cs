@@ -10,13 +10,15 @@ namespace LocadoradeVeiculos.Data
         {
             //Cria a base de dados e suas respectivas tabelas se não existir
             Database.EnsureCreated();
-            
+            //Exclui a base de dados se existir
+            //Database.EnsureDeleted();
         }
 
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Estoque> Estoques { get; set; }
         public DbSet<Funcionario> Funcionarios { get; set; }
         public DbSet<Locacao> Locacoes { get; set; }
+        public DbSet<Log> Log { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -24,12 +26,12 @@ namespace LocadoradeVeiculos.Data
             modelBuilder.Entity<Locacao>()
                 .HasOne(p => p.Cliente)
                 .WithMany(b => b.Locacaos)                
-                .HasForeignKey(p => p.IdCliente);
+                .HasForeignKey(p => p.CPF);
 
             modelBuilder.Entity<Locacao>()
                 .HasOne(p => p.Estoque)
                 .WithMany(b => b.Locacaos)
-                .HasForeignKey(p => p.IdEstoque);
+                .HasForeignKey(p => p.IdEstoque);            
 
         }
 

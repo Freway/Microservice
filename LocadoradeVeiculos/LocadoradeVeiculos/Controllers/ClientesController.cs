@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using LocadoradeVeiculos.Data;
 using LocadoradeVeiculos.Models;
 using LocadoradeVeiculos.Tools;
+using Microsoft.Extensions.Logging;
 
 namespace LocadoradeVeiculos.Controllers
 {
@@ -16,16 +17,18 @@ namespace LocadoradeVeiculos.Controllers
     public class ClientesController : ControllerBase
     {
         private readonly LocadoraContext _context;
+        private readonly ILogger<ClientesController> _logger;
 
-        public ClientesController(LocadoraContext context)
+        public ClientesController(LocadoraContext context, ILogger<ClientesController> logger)
         {
+            _logger = logger;
             _context = context;
         }
 
-        // GET: api/Clientes
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes()
         {
+           _logger.LogInformation("Sem erro, Get trazendo resposta");
             return await _context.Clientes.ToListAsync();
         }
 
@@ -37,9 +40,11 @@ namespace LocadoradeVeiculos.Controllers
 
             if (cliente == null)
             {
+                _logger.LogInformation("404 - Not Found");
                 return NotFound();
             }
 
+            _logger.LogInformation("GET {ID} da consulta", id);
             return cliente;
         }
 
@@ -51,6 +56,7 @@ namespace LocadoradeVeiculos.Controllers
         {
             if (id != cliente.IdCliente)
             {
+                _logger.LogInformation("400 - Bad Request");
                 return BadRequest();
             }
 
@@ -58,20 +64,23 @@ namespace LocadoradeVeiculos.Controllers
 
             try
             {
+                _logger.LogInformation("Atualizado {NomeCliente}", cliente.NomeCliente);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
                 if (!ClienteExists(id))
                 {
+                    _logger.LogInformation("404 - Not Found");
                     return NotFound();
                 }
                 else
-                {
+                {                    
                     throw;
                 }
             }
 
+            _logger.LogInformation("204 - No Content");
             return NoContent();
         }
 
@@ -84,13 +93,10 @@ namespace LocadoradeVeiculos.Controllers
             //if (ValidaCPF.IsCpf(cliente.CPF))
             //{
             //}
-
             _context.Clientes.Add(cliente);
             await _context.SaveChangesAsync();
 
-
-           
-
+            _logger.LogInformation("Adicionado novo cliente");
             return CreatedAtAction(nameof(GetCliente), new { id = cliente.IdCliente }, cliente);
         }
 
@@ -101,12 +107,14 @@ namespace LocadoradeVeiculos.Controllers
             var cliente = await _context.Clientes.FindAsync(id);
             if (cliente == null)
             {
+                _logger.LogInformation("404 - Not Found");
                 return NotFound();
             }
 
             _context.Clientes.Remove(cliente);
             await _context.SaveChangesAsync();
 
+            _logger.LogInformation("Removido Cliente {NomeCliente}",cliente.NomeCliente);
             return cliente;
         }
 

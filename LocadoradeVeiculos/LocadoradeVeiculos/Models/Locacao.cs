@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -14,7 +15,7 @@ namespace LocadoradeVeiculos.Models
         public DateTime DataReservaInicio { get; set; }
         public DateTime DataReservaFim { get; set; }
         [Required]
-        public int IdCliente { get; set; }
+        public int CPF { get; set; }
 
         [ForeignKey("IdCliente")]
         public virtual Cliente Cliente { get; set; }

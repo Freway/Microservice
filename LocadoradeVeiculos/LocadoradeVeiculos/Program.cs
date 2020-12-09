@@ -7,55 +7,46 @@ using LocadoradeVeiculos.Data;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.Extensions.DependencyInjection;
-
-
-
+using Serilog;
 
 namespace LocadoradeVeiculos
 {
     public class Program
     {
         public static void Main(string[] args)
-    {
-        var host = CreateHostBuilder(args).Build();
-
-        using (var scope = host.Services.CreateScope())
         {
-            var services = scope.ServiceProvider;
+            IConfigurationRoot configuration = new
+           ConfigurationBuilder().AddJsonFile("appsettings.json",
+           optional: false, reloadOnChange: true).Build();
+            Log.Logger = new LoggerConfiguration().ReadFrom.Configuration
+            (configuration).CreateLogger();
 
-            try
+            var host = CreateHostBuilder(args).Build();
+
+            using (var scope = host.Services.CreateScope())
             {
+                var services = scope.ServiceProvider;
+
+                try
+                {
                     InicializaBD.Initialize(services);
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "Ocorreu um erro ao povoar a base de dados");
+                }
             }
-            catch (Exception ex)
-            {
-                var logger = services.GetRequiredService<ILogger<Program>>();
-                logger.LogError(ex, "An error occurred seeding the DB.");
-            }
+
+            host.Run();
         }
 
-        host.Run();
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .UseSerilog()
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
     }
-
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.UseStartup<Startup>();
-            });
-    //    public static void Main(string[] args)
-    //    {
-    //        CreateHostBuilder(args).Build().Run();
-    //        //var cliente = new Cliente () { NomeCliente = "João", CPF = "123.543.782-54" };
-
-    //        //Console.WriteLine(JsonSerializer.Serialize<Cliente>(cliente));
-    //    }
-
-    //    public static IHostBuilder CreateHostBuilder(string[] args) =>
-    //        Host.CreateDefaultBuilder(args)
-    //            .ConfigureWebHostDefaults(webBuilder =>
-    //            {
-    //                webBuilder.UseStartup<Startup>();
-    //            });
-}
 }

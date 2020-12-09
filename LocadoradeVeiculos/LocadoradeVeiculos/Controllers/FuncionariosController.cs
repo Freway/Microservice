@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LocadoradeVeiculos.Data;
 using LocadoradeVeiculos.Models;
+using Microsoft.Extensions.Logging;
 
 namespace LocadoradeVeiculos.Controllers
 {
@@ -15,9 +16,10 @@ namespace LocadoradeVeiculos.Controllers
     public class FuncionariosController : ControllerBase
     {
         private readonly LocadoraContext _context;
-
-        public FuncionariosController(LocadoraContext context)
+        private readonly ILogger<EstoquesController> _logger;
+        public FuncionariosController(LocadoraContext context, ILogger<EstoquesController> logger)
         {
+            _logger = logger;
             _context = context;
         }
 
@@ -25,6 +27,7 @@ namespace LocadoradeVeiculos.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Funcionario>>> GetFuncionarios()
         {
+            _logger.LogInformation("Sem erro, Get trazendo resposta");
             return await _context.Funcionarios.ToListAsync();
         }
 
@@ -36,9 +39,11 @@ namespace LocadoradeVeiculos.Controllers
 
             if (funcionario == null)
             {
+                _logger.LogInformation("404 - Not Found");
                 return NotFound();
             }
 
+            _logger.LogInformation("GET {ID} da consulta", id);
             return funcionario;
         }
 
@@ -50,6 +55,7 @@ namespace LocadoradeVeiculos.Controllers
         {
             if (id != funcionario.IdFuncionario)
             {
+                _logger.LogInformation("400 - Bad Request");
                 return BadRequest();
             }
 
@@ -57,20 +63,23 @@ namespace LocadoradeVeiculos.Controllers
 
             try
             {
+                _logger.LogInformation("Atualizado {Nome}", funcionario.Nome);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
                 if (!FuncionarioExists(id))
                 {
+                    _logger.LogInformation("404 - Not Found");
                     return NotFound();
                 }
                 else
-                {
+                {                    
                     throw;
                 }
             }
 
+            _logger.LogInformation("204 - No Content");
             return NoContent();
         }
 
@@ -83,6 +92,7 @@ namespace LocadoradeVeiculos.Controllers
             _context.Funcionarios.Add(funcionario);
             await _context.SaveChangesAsync();
 
+            _logger.LogInformation("Cadastrado novo funcionario");
             return CreatedAtAction(nameof(GetFuncionario), new { id = funcionario.IdFuncionario }, funcionario);
         }
 
@@ -93,12 +103,14 @@ namespace LocadoradeVeiculos.Controllers
             var funcionario = await _context.Funcionarios.FindAsync(id);
             if (funcionario == null)
             {
+                _logger.LogInformation("404 - Not Found");
                 return NotFound();
             }
-
+                       
             _context.Funcionarios.Remove(funcionario);
             await _context.SaveChangesAsync();
 
+            _logger.LogInformation("Deletado funcionario {Nome}", funcionario.Nome);
             return funcionario;
         }
 

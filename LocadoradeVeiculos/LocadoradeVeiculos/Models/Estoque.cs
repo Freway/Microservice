@@ -18,5 +18,11 @@ namespace LocadoradeVeiculos.Models
         public string AnoModelo { get; set; }
         public string AnoFabricacao { get; set; }
         public virtual ICollection<Locacao> Locacaos { get; set; }
+
+        public class RootObject
+        {
+            public string identificador { get; set; }
+            public List<Estoque> eventos { get; set; }
+        }
     }
 }

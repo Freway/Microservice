@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LocadoradeVeiculos.Data;
 using LocadoradeVeiculos.Models;
+using Microsoft.Extensions.Logging;
 
 namespace LocadoradeVeiculos.Controllers
 {
@@ -15,9 +16,10 @@ namespace LocadoradeVeiculos.Controllers
     public class LocacaosController : ControllerBase
     {
         private readonly LocadoraContext _context;
-
-        public LocacaosController(LocadoraContext context)
+        private readonly ILogger<EstoquesController> _logger;
+        public LocacaosController(LocadoraContext context,ILogger<EstoquesController> logger)
         {
+            _logger = logger;
             _context = context;
         }
 
@@ -25,6 +27,7 @@ namespace LocadoradeVeiculos.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Locacao>>> GetLocacoes()
         {
+            _logger.LogInformation("Sem erro, Get trazendo resposta");
             return await _context.Locacoes.ToListAsync();
         }
 
@@ -36,9 +39,11 @@ namespace LocadoradeVeiculos.Controllers
 
             if (locacao == null)
             {
+                _logger.LogInformation("404 - Not Found");
                 return NotFound();
             }
 
+            _logger.LogInformation("GET {ID} da consulta", id);
             return locacao;
         }
 
@@ -50,6 +55,7 @@ namespace LocadoradeVeiculos.Controllers
         {
             if (id != locacao.IdLocacao)
             {
+                _logger.LogInformation("400 - Bad Request");
                 return BadRequest();
             }
 
@@ -57,12 +63,14 @@ namespace LocadoradeVeiculos.Controllers
 
             try
             {
+                _logger.LogInformation("Atualizado {ID}", id);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
                 if (!LocacaoExists(id))
                 {
+                    _logger.LogInformation("404 - Not Found");
                     return NotFound();
                 }
                 else
@@ -71,6 +79,7 @@ namespace LocadoradeVeiculos.Controllers
                 }
             }
 
+            _logger.LogInformation("204 - No Content");
             return NoContent();
         }
 
@@ -83,6 +92,7 @@ namespace LocadoradeVeiculos.Controllers
             _context.Locacoes.Add(locacao);
             await _context.SaveChangesAsync();
 
+            _logger.LogInformation("Cadastrado nova locacao");
             return CreatedAtAction(nameof(GetLocacao), new { id = locacao.IdLocacao }, locacao);
         }
 
@@ -93,12 +103,14 @@ namespace LocadoradeVeiculos.Controllers
             var locacao = await _context.Locacoes.FindAsync(id);
             if (locacao == null)
             {
+                _logger.LogInformation("404 - Not Found");
                 return NotFound();
             }
 
             _context.Locacoes.Remove(locacao);
             await _context.SaveChangesAsync();
 
+            _logger.LogInformation("Deletado {ID}", id);
             return locacao;
         }
 
