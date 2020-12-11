@@ -1,0 +1,24 @@
+networks:
+  dockersql-network:
+    driver: bridge
+services:
+  dockersql.application.webapi:
+    build:
+      context: C:\Users\Freway\Documents\GitHub\Microservice\LocadoradeVeiculos
+      dockerfile: Source/Application/DockerSQL.Application.WebAPI/Dockerfile
+    depends_on:
+      sql.database:
+        condition: service_started
+    image: dockersql.application.webapi
+    networks:
+      dockersql-network: {}
+  locadoradeveiculos:
+    build:
+      context: C:\Users\Freway\Documents\GitHub\Microservice\LocadoradeVeiculos
+      dockerfile: LocadoradeVeiculos\Dockerfile
+    image: locadoradeveiculos
+  sql.database:
+    image: microsoft/mssql-server-windows:2017-latest
+    networks:
+      dockersql-network: {}
+version: '3.4'
