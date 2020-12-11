@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   locadoradeveiculos:
-    image: locadoradeveiculos:dev
+    image: LocadoradeVeiculos:dev
     container_name: LocadoradeVeiculos_1
     build:
       target: base

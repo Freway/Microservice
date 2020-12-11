@@ -14,7 +14,7 @@ services:
     image: LocadoradeVeiculos
     build:
       context: .
-      dockerfile: LocadoradeVeiculos/LocadoradeVeiculos/Dockerfile
+      dockerfile: LocadoradeVeiculos\Dockerfile
     networks:
       - dockersql-network
     depends_on:

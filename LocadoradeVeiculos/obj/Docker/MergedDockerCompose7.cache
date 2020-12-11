@@ -1,0 +1,51 @@
+networks:
+  dockersql-network:
+    driver: bridge
+services:
+  locadoradeveiculos:
+    build:
+      context: C:\Users\Freway\Documents\GitHub\Microservice\LocadoradeVeiculos
+      dockerfile: LocadoradeVeiculos\Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: LocadoradeVeiculos
+      target: base
+    container_name: LocadoradeVeiculos_1
+    depends_on:
+      sql.database:
+        condition: service_started
+    entrypoint: C:\\remote_debugger\\x64\\msvsmon.exe /noauth /anyuser /silent /nostatus
+      /noclrwarn /nosecuritywarn /nofirewallwarn /nowowwarn /timeout:2147483646 /LogDebuggeeOutputToStdOut
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: c:\.nuget\fallbackpackages
+      NUGET_PACKAGES: C:\.nuget\packages
+    image: locadoradeveiculos:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath c:\.nuget\packages
+        --additionalProbingPath c:\.nuget\fallbackpackages  "C:\app\bin\Debug\net5.0\LocadoradeVeiculos.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: C:\remote_debugger\x64\utils\KillProcess.exe
+        dotnet.exe
+      com.microsoft.visualstudio.debuggee.program: '"C:\Program Files\dotnet\dotnet.exe"'
+      com.microsoft.visualstudio.debuggee.workingdirectory: C:\app
+    networks:
+      dockersql-network: {}
+    ports:
+    - target: 80
+    - target: 443
+    volumes:
+    - C:\Users\Freway\AppData\Roaming\ASP.NET\Https:C:\Users\ContainerUser\AppData\Roaming\ASP.NET\Https:ro
+    - C:\Users\Freway\AppData\Roaming\Microsoft\UserSecrets:C:\Users\ContainerUser\AppData\Roaming\Microsoft\UserSecrets:ro
+    - C:\Users\Freway\Documents\GitHub\Microservice\LocadoradeVeiculos\LocadoradeVeiculos:C:\app:rw
+    - C:\Users\Freway\onecoremsvsmon\16.8.0713.0:C:\remote_debugger:ro
+    - C:\Users\Freway\Documents\GitHub\Microservice\LocadoradeVeiculos:C:\src:rw
+    - C:\Microsoft\Xamarin\NuGet:c:\.nuget\fallbackpackages:ro
+    - C:\Users\Freway\.nuget\packages:c:\.nuget\packages:ro
+  sql.database:
+    image: microsoft/mssql-server-windows:2019-latest
+    networks:
+      dockersql-network: {}
+version: '3.4'
