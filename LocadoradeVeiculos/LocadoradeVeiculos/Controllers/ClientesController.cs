@@ -89,11 +89,9 @@ namespace LocadoradeVeiculos.Controllers
         [HttpPost]
         public async Task<ActionResult<Cliente>> PostCliente(Cliente cliente)
         {
-            //if (ValidaCPF.IsCpf(cliente.CPF))
-            //{
-                _context.Clientes.Add(cliente);
-                await _context.SaveChangesAsync();                               
-            //}
+            _context.Clientes.Add(cliente);
+            await _context.SaveChangesAsync();
+
             _logger.LogInformation("Adicionado novo cliente");
             return CreatedAtAction(nameof(GetCliente), new { id = cliente.IdCliente }, cliente);
         }
