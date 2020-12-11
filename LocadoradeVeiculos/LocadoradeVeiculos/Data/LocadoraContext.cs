@@ -31,7 +31,12 @@ namespace LocadoradeVeiculos.Data
             modelBuilder.Entity<Locacao>()
                 .HasOne(p => p.Estoque)
                 .WithMany(b => b.Locacaos)
-                .HasForeignKey(p => p.IdEstoque);            
+                .HasForeignKey(p => p.IdEstoque);
+
+            //Unique
+            modelBuilder.Entity<Estoque>()
+                .HasIndex(p => p.Placa)
+                .IsUnique();
 
         }
 

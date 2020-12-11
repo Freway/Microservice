@@ -15,9 +15,10 @@ namespace LocadoradeVeiculos.Controllers
     [ApiController]
     public class FuncionariosController : ControllerBase
     {
-        private readonly LocadoraContext _context;
-        private readonly ILogger<EstoquesController> _logger;
-        public FuncionariosController(LocadoraContext context, ILogger<EstoquesController> logger)
+        private readonly LocadoraContext _context;        
+        private readonly ILogger<EstoquesController> _logger;     
+        
+        public FuncionariosController(LocadoraContext context,ILogger<EstoquesController> logger)
         {
             _logger = logger;
             _context = context;
@@ -27,8 +28,10 @@ namespace LocadoradeVeiculos.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Funcionario>>> GetFuncionarios()
         {
+            var items = await _context.Funcionarios.ToListAsync();
+
             _logger.LogInformation("Sem erro, Get trazendo resposta");
-            return await _context.Funcionarios.ToListAsync();
+            return Ok(items);           
         }
 
         // GET: api/Funcionarios/5
@@ -44,7 +47,7 @@ namespace LocadoradeVeiculos.Controllers
             }
 
             _logger.LogInformation("GET {ID} da consulta", id);
-            return funcionario;
+            return Ok(funcionario);
         }
 
         // PUT: api/Funcionarios/5
@@ -88,7 +91,7 @@ namespace LocadoradeVeiculos.Controllers
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
         public async Task<ActionResult<Funcionario>> PostFuncionario(Funcionario funcionario)
-        {
+        {                    
             _context.Funcionarios.Add(funcionario);
             await _context.SaveChangesAsync();
 

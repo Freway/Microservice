@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  locadoradeveiculos:
+    image: ${DOCKER_REGISTRY-}locadoradeveiculos
+    build:
+      context: .
+      dockerfile: LocadoradeVeiculos\Dockerfile

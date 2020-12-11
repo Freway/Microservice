@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using LocadoradeVeiculos.Data;
 using LocadoradeVeiculos.Models;
 using Microsoft.Extensions.Logging;
+using System.Net.Http;
 
 namespace LocadoradeVeiculos.Controllers
 {
@@ -25,7 +26,6 @@ namespace LocadoradeVeiculos.Controllers
 
         // GET: api/Estoques
         [HttpGet]
-        [Route("Estoque")]
         public async Task<ActionResult<IEnumerable<Estoque>>> GetEstoques()
         {
             _logger.LogInformation("Sem erro, Get trazendo resposta");
@@ -75,7 +75,7 @@ namespace LocadoradeVeiculos.Controllers
                     return NotFound();
                 }
                 else
-                {                    
+                {
                     throw;
                 }
             }
@@ -89,27 +89,17 @@ namespace LocadoradeVeiculos.Controllers
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
         public async Task<ActionResult<Estoque>> PostEstoque(Estoque estoque)
-        {
-            ////string jsonData = "";
-            //var evento = new RootObject();
-            ////jsonData = JsonConvert.SerializeObject(_getEventos);
-            //evento.identificador = "POINTER";
-            //evento.eventos = listaEventos;
-
-            //var client = new RestClient(ConfigurationManager.AppSettings["url"]);
-            //var request = new RestRequest(ConfigurationManager.AppSettings["path"], Method.POST);
-            ////var request = new RestRequest(Method.POST);
-            //request.RequestFormat = DataFormat.Json;
-            //request.AddHeader("content-Type", "application/json");
-            ////request.AddParameter("application/json", jsonData, ParameterType.RequestBody);
-            //request.AddParameter("Token", _Token, ParameterType.QueryString);
-            //request.AddParameter("DataHora", DateTime.Now.ToString(_formatData), ParameterType.QueryString);
-            //request.AddBody(evento);
-
-            //var retorno = client.Execute(request);
-
-            _context.Estoques.Add(estoque);
-            await _context.SaveChangesAsync();
+        {          
+            try
+            {
+                _context.Estoques.Add(estoque);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                _logger.LogInformation("Placa ou id já cadastrado {Placa}", estoque.Placa);
+                return BadRequest("Placa ou id já cadastrado");
+            }
 
             _logger.LogInformation("Cadastrado novo veiculo");
             return CreatedAtAction(nameof(GetEstoque), new { id = estoque.IdEstoque }, estoque);
@@ -129,13 +119,45 @@ namespace LocadoradeVeiculos.Controllers
             _context.Estoques.Remove(estoque);
             await _context.SaveChangesAsync();
 
-            _logger.LogInformation("Deletado veiculo {ID}",id);
+            _logger.LogInformation("Deletado veiculo {ID}", id);
             return estoque;
         }
 
+        //private void FipeMarcas()
+        //{
+        //    List<String> tipo = new List<string>();
+        //    tipo.Add("Carros");
+        //    tipo.Add("Motos");
+        //    tipo.Add("Caminhoes");
+
+        //    var URLMarcas = "http://fipeapi.appspot.com/api/1/" + tipo + "/marcas.json";
+
+        //    using (var client = new HttpClient())
+        //    {
+        //        using (var response = await client.GetAsync(URLMarcas))
+        //        {
+        //            if (response.IsSuccessStatusCode)
+        //            {
+        //                var ProdutoJsonString = await response.Content.ReadAsStringAsync();
+        //                dgvDados.DataSource = JsonConvert.DeserializeObject<Produto[]>(ProdutoJsonString).ToList();
+        //            }
+        //            else
+        //            {
+        //                _logger.LogInformation("204 - No Content");
+        //                return NoContent();
+        //            }
+        //        }
+        //    }
+        //}
         private bool EstoqueExists(int id)
         {
             return _context.Estoques.Any(e => e.IdEstoque == id);
         }
+
+        //static void BuscaEstoque(IQueryable<int> items)
+        //{
+        //    Console.WriteLine($"Average: {items.Average()}");
+        //    Console.WriteLine($"Sum: {items.Sum()}");
+        //}
     }
 }

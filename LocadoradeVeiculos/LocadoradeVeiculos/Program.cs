@@ -4,8 +4,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using LocadoradeVeiculos.Data;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 
@@ -19,7 +17,7 @@ namespace LocadoradeVeiculos
            ConfigurationBuilder().AddJsonFile("appsettings.json",
            optional: false, reloadOnChange: true).Build();
             Log.Logger = new LoggerConfiguration().ReadFrom.Configuration
-            (configuration).CreateLogger();
+                (configuration).CreateLogger();
 
             var host = CreateHostBuilder(args).Build();
 

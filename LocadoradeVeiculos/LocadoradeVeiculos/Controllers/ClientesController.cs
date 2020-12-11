@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LocadoradeVeiculos.Data;
 using LocadoradeVeiculos.Models;
-using LocadoradeVeiculos.Tools;
 using Microsoft.Extensions.Logging;
 
 namespace LocadoradeVeiculos.Controllers
@@ -28,7 +27,7 @@ namespace LocadoradeVeiculos.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes()
         {
-           _logger.LogInformation("Sem erro, Get trazendo resposta");
+            _logger.LogInformation("Sem erro, Get trazendo resposta");
             return await _context.Clientes.ToListAsync();
         }
 
@@ -75,7 +74,7 @@ namespace LocadoradeVeiculos.Controllers
                     return NotFound();
                 }
                 else
-                {                    
+                {
                     throw;
                 }
             }
@@ -92,10 +91,9 @@ namespace LocadoradeVeiculos.Controllers
         {
             //if (ValidaCPF.IsCpf(cliente.CPF))
             //{
+                _context.Clientes.Add(cliente);
+                await _context.SaveChangesAsync();                               
             //}
-            _context.Clientes.Add(cliente);
-            await _context.SaveChangesAsync();
-
             _logger.LogInformation("Adicionado novo cliente");
             return CreatedAtAction(nameof(GetCliente), new { id = cliente.IdCliente }, cliente);
         }
@@ -114,7 +112,7 @@ namespace LocadoradeVeiculos.Controllers
             _context.Clientes.Remove(cliente);
             await _context.SaveChangesAsync();
 
-            _logger.LogInformation("Removido Cliente {NomeCliente}",cliente.NomeCliente);
+            _logger.LogInformation("Removido Cliente {NomeCliente}", cliente.NomeCliente);
             return cliente;
         }
 
