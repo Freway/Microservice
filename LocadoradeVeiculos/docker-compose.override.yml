@@ -27,4 +27,4 @@ services:
 
 networks: 
   dockersql-network:
-    driver: bridge
+    driver: nat
