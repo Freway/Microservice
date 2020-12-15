@@ -3,9 +3,9 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Windows</DockerTargetOS>
-    <ProjectGuid>7ee546c8-5abb-4faa-a2a3-071c7c49489c</ProjectGuid>
+    <ProjectGuid>0c74fb49-9d92-4dfc-85f4-1cbab48e40f6</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
-    <DockerServiceUrl>{Scheme}://{ServiceIPAddress}{ServicePort}/swagger</DockerServiceUrl>
+    <DockerServiceUrl>{Scheme}://{ServiceIPAddress}{ServicePort}/api/Clientes</DockerServiceUrl>
     <DockerServiceName>locadoradeveiculos</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>

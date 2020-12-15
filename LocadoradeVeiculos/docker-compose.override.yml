@@ -3,28 +3,11 @@ version: '3.4'
 services:
   locadoradeveiculos:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
+      "ConnectionStrings": "Server=(localdb)\\MSSQLLocalDB;Database=Locadora;Trusted_Connection=True;MultipleActiveResultSets=true;"
+ 
     ports:
-      - "80"
+      - "5101:80"
       - "443"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:C:\Users\ContainerUser\AppData\Roaming\Microsoft\UserSecrets:ro
-      - ${APPDATA}/ASP.NET/Https:C:\Users\ContainerUser\AppData\Roaming\ASP.NET\Https:ro    
-    image: LocadoradeVeiculos
-    build:
-      context: .
-      dockerfile: LocadoradeVeiculos\Dockerfile
-    networks:
-      - dockersql-network
-    depends_on:
-      - sql.database
-
-  sql.database:
-    image: microsoft/mssql-server-windows:2019-latest
-    networks:
-      - dockersql-network
-
-networks: 
-  dockersql-network:
-    driver: nat
+      - ${APPDATA}/ASP.NET/Https:C:\Users\ContainerUser\AppData\Roaming\ASP.NET\Https:ro
